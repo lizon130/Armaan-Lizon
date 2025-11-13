@@ -37,7 +37,8 @@
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
     .profile-card{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
-    .avatar{width:120px;height:120px;border-radius:20px;background:linear-gradient(180deg,#15203a,#0b1220);display:grid;place-items:center;font-weight:800;font-size:34px}
+    .avatar{width:120px;height:120px;border-radius:20px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(180deg,#15203a,#0b1220)}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:20px}
     .meta{color:var(--muted);font-size:13px}
 
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
@@ -52,7 +53,7 @@
     footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:30px}
 
     @media (max-width:880px){.hero,.two-col{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}nav{display:none}}
-    @media (max-width:520px){.grid{grid-template-columns:1fr}.avatar{width:96px;height:96px;font-size:28px}.logo{width:44px;height:44px}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}.avatar{width:96px;height:96px}.logo{width:44px;height:44px}}
 
     .fade-up{animation:fadeUp .7s cubic-bezier(.2,.9,.2,1) both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -98,7 +99,7 @@
 
       <aside class="profile-card card fade-up">
         <div class="avatar mono">
-          <img src="" alt="">
+          <img src="arman-01.jpeg" alt="MD. Arman Haque Lizon">
         </div>
         <div style="font-weight:700">MD. Arman Haque Lizon</div>
         <div class="meta">Software Developer at Tusuka Group</div>
@@ -140,7 +141,7 @@
 
         <h4 style="margin-top:18px">Tech Focus</h4>
         <ul style="color:var(--muted);padding-left:18px;margin-top:8px">
-          <li>AI‑assisted backend systems using PHP, Laravel & .NET</li>
+          <li>AI-assisted backend systems using PHP, Laravel & .NET</li>
           <li>Database design, optimization, and analytics with SQL & MySQL</li>
           <li>Frontend interfaces with Tailwind & modern JavaScript</li>
           <li>Integration of AI/ML APIs and intelligent automation</li>
@@ -179,7 +180,7 @@
     </section>
 
     <footer>
-      <div>© <span id="year"></span> MD. Arman Haque Lizon — AI-driven PHP & Full Stack Developer • <span class="mono">armanhaqcse@gmail.com</span></div>
+      <div>© <span id="year"></span> MD. Arman Haque Lizon — AI-driven PHP & Full Stack Developer • <span class="mono">arman@example.com</span></div>
     </footer>
   </main>
 
@@ -214,6 +215,8 @@
       ];
       $('#bioOut').textContent=bios[Math.floor(Math.random()*bios.length)];
     });
+
+    $('#contactBtn').addEventListener('click',()=>location.href='#contact');
   </script>
 </body>
 </html>
