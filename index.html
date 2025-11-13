@@ -264,6 +264,13 @@
           transform: none;
         }
       }
+
+      .projectlinkColor {
+        background: linear-gradient(90deg, var(--accent), #06b6d4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
     </style>
   </head>
   <body>
@@ -290,14 +297,7 @@
         <div class="card intro fade-up">
           <h1>
             Hi — I'm
-            <span
-              style="
-                background: linear-gradient(90deg, var(--accent), #06b6d4);
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-              "
-              >MD. Arman Haque Lizon</span
+            <span class="projectlinkColor">MD. Arman Haque Lizon</span
             ><br /><small style="font-weight: 600; color: var(--muted)"
               >AI-driven Software Developer | PHP, Laravel, .NET & Full Stack
               Specialist</small
@@ -339,14 +339,16 @@
           <div class="meta">Software Developer at Tusuka Group</div>
           <div style="display: flex; gap: 8px; margin-top: 12px">
             <a class="btn btn-ghost" href="#projects">Projects</a>
-            <a class="btn btn-ghost" href="mailto:armanhaqcse@gmail.com">Email</a>
+            <a class="btn btn-ghost" href="mailto:armanhaqcse@gmail.com"
+              >Email</a
+            >
           </div>
           <div style="margin-top: 14px; color: var(--muted); font-size: 13px">
             Core Expertise
           </div>
           <div class="roles" style="justify-content: center; margin-top: 8px">
             <div class="pill">Laravel / PHP</div>
-            <div class="pill">C# / .NET</div>
+            <div class="pill">C/ C# / .NET</div>
             <div class="pill">AI Integration</div>
           </div>
         </aside>
@@ -356,21 +358,34 @@
         <h3 style="margin: 0">Highlighted Projects</h3>
         <div class="grid">
           <div class="feature fade-up">
-            <h4>AI-powered Laravel CRM</h4>
+            <a href="https://www.ictolympiadbangladesh.com/">
+              <h4 class="projectlinkColor">ICT Olympiad Bangladesh</h4>
+            </a>
+            <p>
+              Built an intelligent ICT Olympiad platform using
+              <strong>PHP</strong>, <strong>Laravel</strong>, and
+              <strong>MySQL</strong> with <strong>HTML</strong>,
+              <strong>CSS</strong>, and <strong>JavaScript</strong> for the
+              frontend. Features include AI-based lead scoring and predictive
+              analytics.
+            </p>
+          </div>
+          <div class="feature fade-up">
+            <h4 class="projectlinkColor">AI-powered Laravel CRM</h4>
             <p>
               Developed an intelligent CRM system using Laravel with AI-driven
               lead scoring, email classification, and predictive analytics.
             </p>
           </div>
           <div class="feature fade-up">
-            <h4>Smart Inventory System (.NET)</h4>
+            <h4 class="projectlinkColor">Smart Inventory System (.NET)</h4>
             <p>
               Built an AI-assisted inventory tracker using C# and SQL Server
               that optimizes stock and predicts shortages.
             </p>
           </div>
           <div class="feature fade-up">
-            <h4>PHP Chatbot with OpenAI</h4>
+            <h4 class="projectlinkColor">PHP Chatbot with OpenAI</h4>
             <p>
               Created a conversational chatbot in PHP integrating OpenAI APIs
               for customer support and automated knowledge retrieval.
