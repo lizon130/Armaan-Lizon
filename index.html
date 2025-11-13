@@ -31,7 +31,6 @@
       }
       html,
       body {
-        scroll-behavior: smooth;
         height: 100%;
         margin: 0;
         font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -67,10 +66,6 @@
         display: grid;
         place-items: center;
         font-weight: 800;
-        transition: transform 0.3s ease;
-      }
-      .logo:hover {
-        transform: scale(1.1);
       }
       .logo span {
         font-size: 18px;
@@ -85,11 +80,6 @@
         border-radius: 10px;
         font-weight: 600;
         color: var(--muted);
-        transition: all 0.3s ease;
-      }
-      nav a:hover {
-        color: #fff;
-        background: rgba(124, 58, 237, 0.12);
       }
       nav a.cta {
         background: linear-gradient(
@@ -99,15 +89,12 @@
         );
         color: #fff;
       }
-      nav a.cta:hover {
-        background: linear-gradient(90deg, var(--accent), #06b6d4);
-      }
 
       .hero {
         display: grid;
         grid-template-columns: 1fr 360px;
         gap: 28px;
-        align-items: start;
+        align-items: center;
         margin-top: 28px;
       }
       .card {
@@ -120,11 +107,6 @@
         border-radius: var(--radius);
         backdrop-filter: blur(6px);
         box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 40px rgba(2, 6, 23, 0.8);
       }
       .intro h1 {
         margin: 0;
@@ -147,11 +129,6 @@
         border-radius: 999px;
         font-weight: 600;
         color: var(--muted);
-        transition: all 0.3s ease;
-      }
-      .pill:hover {
-        background: var(--accent);
-        color: #001;
       }
       .cta-row {
         display: flex;
@@ -164,24 +141,15 @@
         font-weight: 700;
         cursor: pointer;
         border: 0;
-        transition: all 0.3s ease;
       }
       .btn-primary {
         background: linear-gradient(90deg, var(--accent), #06b6d4);
         color: #001;
       }
-      .btn-primary:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-      }
       .btn-ghost {
         background: transparent;
         border: 1px solid rgba(255, 255, 255, 0.06);
         color: var(--muted);
-      }
-      .btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.06);
-        color: #fff;
       }
 
       .profile-card {
@@ -205,10 +173,6 @@
         height: 100%;
         object-fit: cover;
         border-radius: 20px;
-        transition: transform 0.3s ease;
-      }
-      .avatar img:hover {
-        transform: scale(1.05);
       }
       .meta {
         color: var(--muted);
@@ -230,11 +194,6 @@
           rgba(255, 255, 255, 0.02)
         );
         min-height: 110px;
-        transition: all 0.3s ease;
-      }
-      .feature:hover {
-        transform: translateY(-4px);
-        background: rgba(124, 58, 237, 0.05);
       }
       .feature h4 {
         margin: 0 0 8px 0;
@@ -309,12 +268,249 @@
   </head>
   <body>
     <main>
-      <!-- All existing HTML content remains as-is -->
-      <!-- Your header, hero, about, projects, AI demo, footer... -->
-      <!-- Only minor improvements like hover effects, smooth scroll, and responsive tweaks were added -->
+      <header class="fade-up">
+        <div class="brand">
+          <div class="logo" aria-hidden><span>AL</span></div>
+          <div>
+            <div style="font-weight: 800">MD. Arman Haque Lizon</div>
+            <div style="font-size: 12px; color: var(--muted)">
+              Software Developer — Tusuka Group
+            </div>
+          </div>
+        </div>
+        <nav aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#ai-demo">AI Demo</a>
+          <a class="cta" href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="card intro fade-up">
+          <h1>
+            Hi — I'm
+            <span
+              style="
+                background: linear-gradient(90deg, var(--accent), #06b6d4);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+              "
+              >MD. Arman Haque Lizon</span
+            ><br /><small style="font-weight: 600; color: var(--muted)"
+              >AI-driven Software Developer | PHP, Laravel, .NET & Full Stack
+              Specialist</small
+            >
+          </h1>
+          <p class="lead">
+            I specialize in building intelligent and scalable applications using
+            <strong
+              >PHP, Laravel, C#, .NET, SQL, MySQL, JavaScript, and
+              TailwindCSS</strong
+            >. My passion lies in blending traditional development with
+            cutting-edge AI solutions to create efficient digital systems.
+          </p>
+          <div class="roles">
+            <div class="pill">PHP / Laravel</div>
+            <div class="pill">C / C# / .NET</div>
+            <div class="pill">SQL / MySQL</div>
+            <div class="pill">TailwindCSS</div>
+            <div class="pill">JavaScript / AI</div>
+          </div>
+
+          <div class="cta-row">
+            <button class="btn btn-primary" id="downloadResume">
+              Download Resume
+            </button>
+            <button class="btn btn-ghost" id="contactBtn">Get in touch</button>
+          </div>
+
+          <div style="margin-top: 16px; color: var(--muted); font-size: 13px">
+            Based in Dhaka · Open to AI-powered projects
+          </div>
+        </div>
+
+        <aside class="profile-card card fade-up">
+          <div class="avatar mono">
+            <img src="arman-01.jpeg" alt="MD. Arman Haque Lizon" />
+          </div>
+          <div style="font-weight: 700">MD. Arman Haque Lizon</div>
+          <div class="meta">Software Developer at Tusuka Group</div>
+          <div style="display: flex; gap: 8px; margin-top: 12px">
+            <a class="btn btn-ghost" href="#projects">Projects</a>
+            <a class="btn btn-ghost" href="mailto:armanhaqcse@gmail.com">Email</a>
+          </div>
+          <div style="margin-top: 14px; color: var(--muted); font-size: 13px">
+            Core Expertise
+          </div>
+          <div class="roles" style="justify-content: center; margin-top: 8px">
+            <div class="pill">Laravel / PHP</div>
+            <div class="pill">C# / .NET</div>
+            <div class="pill">AI Integration</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects" class="section">
+        <h3 style="margin: 0">Highlighted Projects</h3>
+        <div class="grid">
+          <div class="feature fade-up">
+            <h4>AI-powered Laravel CRM</h4>
+            <p>
+              Developed an intelligent CRM system using Laravel with AI-driven
+              lead scoring, email classification, and predictive analytics.
+            </p>
+          </div>
+          <div class="feature fade-up">
+            <h4>Smart Inventory System (.NET)</h4>
+            <p>
+              Built an AI-assisted inventory tracker using C# and SQL Server
+              that optimizes stock and predicts shortages.
+            </p>
+          </div>
+          <div class="feature fade-up">
+            <h4>PHP Chatbot with OpenAI</h4>
+            <p>
+              Created a conversational chatbot in PHP integrating OpenAI APIs
+              for customer support and automated knowledge retrieval.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section two-col">
+        <div class="card fade-up">
+          <h3>About me</h3>
+          <p class="lead" style="margin-top: 6px">
+            As a software developer passionate about AI, I bridge backend
+            engineering with intelligent automation. My expertise includes PHP,
+            Laravel, .NET, SQL, and modern frontend frameworks like Tailwind and
+            JavaScript. I continuously explore how AI can transform business
+            systems through automation and insights.
+          </p>
+
+          <h4 style="margin-top: 18px">Tech Focus</h4>
+          <ul style="color: var(--muted); padding-left: 18px; margin-top: 8px">
+            <li>AI-assisted backend systems using PHP, Laravel & .NET</li>
+            <li>
+              Database design, optimization, and analytics with SQL & MySQL
+            </li>
+            <li>Frontend interfaces with Tailwind & modern JavaScript</li>
+            <li>Integration of AI/ML APIs and intelligent automation</li>
+          </ul>
+
+          <h4 style="margin-top: 14px">Contact</h4>
+          <p style="color: var(--muted)">
+            Email:
+            <a href="mailto:armanhaqcse@gmail.com">armanhaqcse@gmail.com</a
+            ><br />Location: Dhaka, Bangladesh
+          </p>
+        </div>
+
+        <div class="contact-card card fade-up">
+          <h4>Quick contact</h4>
+          <form id="contactForm">
+            <label
+              style="
+                display: block;
+                margin-top: 10px;
+                font-size: 13px;
+                color: var(--muted);
+              "
+              >Your email</label
+            >
+            <input
+              type="email"
+              id="email"
+              required
+              style="
+                width: 100%;
+                padding: 10px;
+                margin-top: 6px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                background: transparent;
+                color: inherit;
+              "
+              placeholder="you@company.com"
+            />
+
+            <label
+              style="
+                display: block;
+                margin-top: 10px;
+                font-size: 13px;
+                color: var(--muted);
+              "
+              >Message</label
+            >
+            <textarea
+              id="message"
+              rows="4"
+              required
+              style="
+                width: 100%;
+                padding: 10px;
+                margin-top: 6px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                background: transparent;
+                color: inherit;
+              "
+              placeholder="Hi Arman —"
+            ></textarea>
+
+            <div style="display: flex; gap: 8px; margin-top: 12px">
+              <button class="btn btn-primary" type="submit">Send</button>
+              <button class="btn btn-ghost" type="button" id="aiSuggest">
+                AI Suggest
+              </button>
+            </div>
+            <div
+              id="formMsg"
+              style="margin-top: 10px; color: var(--muted); font-size: 13px"
+            ></div>
+          </form>
+        </div>
+      </section>
+
+      <section id="ai-demo" class="section card fade-up">
+        <h3>AI Demo (Local Simulation)</h3>
+        <p style="color: var(--muted)">
+          A small simulation that generates professional bios using AI-inspired
+          templates. Replace this section with a real AI API integration if
+          desired.
+        </p>
+        <div
+          style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px"
+        >
+          <input
+            id="bioTopic"
+            placeholder="Focus (e.g. Laravel, AI, .NET)"
+            class="mono"
+            style="
+              padding: 8px;
+              border-radius: 8px;
+              border: 1px solid rgba(255, 255, 255, 0.04);
+              background: transparent;
+              color: inherit;
+            "
+          />
+          <button class="btn btn-primary" id="genBio">Generate Bio</button>
+        </div>
+        <div id="bioOut" style="margin-top: 12px; color: var(--muted)"></div>
+      </section>
+
+      <footer>
+        <div>
+          © <span id="year"></span> MD. Arman Haque Lizon — AI-driven PHP & Full
+          Stack Developer • <span class="mono">armanhaqcse@gmail.com</span>
+        </div>
+      </footer>
     </main>
+
     <script>
-      // Existing JS functionality preserved
       const $ = (s) => document.querySelector(s);
       $("#year").textContent = new Date().getFullYear();
 
@@ -344,7 +540,9 @@
           "C# web app",
         ];
         const pick = topics[Math.floor(Math.random() * topics.length)];
-        $("#formMsg").textContent = `Hi Arman, I’m interested in your ${pick} expertise. Can we collaborate?`;
+        $(
+          "#formMsg"
+        ).textContent = `Hi Arman, I’m interested in your ${pick} expertise. Can we collaborate?`;
       });
 
       $("#genBio").addEventListener("click", () => {
@@ -354,10 +552,14 @@
           `Expert in ${topic}, Arman integrates smart algorithms and robust codebases to build scalable web applications.`,
           `MD. Arman Haque Lizon delivers enterprise-grade ${topic} solutions infused with automation and AI adaptability.`,
         ];
-        $("#bioOut").textContent = bios[Math.floor(Math.random() * bios.length)];
+        $("#bioOut").textContent =
+          bios[Math.floor(Math.random() * bios.length)];
       });
 
-      $("#contactBtn").addEventListener("click", () => (location.href = "#contact"));
+      $("#contactBtn").addEventListener(
+        "click",
+        () => (location.href = "#contact")
+      );
     </script>
   </body>
 </html>
