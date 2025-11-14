@@ -6,7 +6,7 @@
     <title>MD. Arman Haque Lizon — Software Developer</title>
     <meta
       name="description"
-      content="MD. Arman Haque Lizon — Software Developer at Tusuka Group. AI-driven PHP & Laravel specialist portfolio."
+      content="MD. Arman Haque Lizon — AI-driven Software Developer at Tusuka Group. PHP & Laravel specialist with cutting-edge AI integration expertise."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +20,8 @@
         --card: #0b1220;
         --muted: #94a3b8;
         --accent: #7c3aed;
+        --accent-glow: rgba(124, 58, 237, 0.4);
+        --secondary: #06b6d4;
         --glass: rgba(255, 255, 255, 0.04);
         --radius: 14px;
         --gap: 20px;
@@ -37,10 +39,25 @@
           "Helvetica Neue", Arial;
         background: linear-gradient(180deg, #071025 0%, #071022 60%);
         color: #e6eef8;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
       }
       a {
         color: inherit;
         text-decoration: none;
+        transition: all 0.3s ease;
       }
       main {
         max-width: var(--maxw);
@@ -52,6 +69,7 @@
         gap: 12px;
         align-items: center;
         justify-content: space-between;
+        position: relative;
       }
       .brand {
         display: flex;
@@ -62,13 +80,32 @@
         width: 48px;
         height: 48px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--accent), #06b6d4);
+        background: linear-gradient(135deg, var(--accent), var(--secondary));
         display: grid;
         place-items: center;
         font-weight: 800;
+        position: relative;
+        overflow: hidden;
+      }
+      .logo::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shine 3s infinite linear;
       }
       .logo span {
         font-size: 18px;
+        z-index: 1;
       }
       nav {
         display: flex;
@@ -80,6 +117,29 @@
         border-radius: 10px;
         font-weight: 600;
         color: var(--muted);
+        position: relative;
+        overflow: hidden;
+      }
+      nav a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+      nav a:hover::before {
+        left: 100%;
+      }
+      nav a:hover {
+        color: #fff;
       }
       nav a.cta {
         background: linear-gradient(
@@ -88,6 +148,11 @@
           rgba(6, 182, 212, 0.08)
         );
         color: #fff;
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+      }
+      nav a.cta:hover {
+        box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
       }
 
       .hero {
@@ -107,6 +172,23 @@
         border-radius: var(--radius);
         backdrop-filter: blur(6px);
         box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.03) 0%,
+          rgba(6, 182, 212, 0.03) 100%
+        );
+        z-index: -1;
       }
       .intro h1 {
         margin: 0;
@@ -116,6 +198,7 @@
       .intro p.lead {
         color: var(--muted);
         margin-top: 12px;
+        line-height: 1.6;
       }
       .roles {
         display: flex;
@@ -129,6 +212,13 @@
         border-radius: 999px;
         font-weight: 600;
         color: var(--muted);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+      .pill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        color: #fff;
       }
       .cta-row {
         display: flex;
@@ -141,15 +231,46 @@
         font-weight: 700;
         cursor: pointer;
         border: 0;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+      .btn:hover::before {
+        left: 100%;
       }
       .btn-primary {
-        background: linear-gradient(90deg, var(--accent), #06b6d4);
+        background: linear-gradient(90deg, var(--accent), var(--secondary));
         color: #001;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
       }
       .btn-ghost {
         background: transparent;
         border: 1px solid rgba(255, 255, 255, 0.06);
         color: var(--muted);
+      }
+      .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        transform: translateY(-2px);
       }
 
       .profile-card {
@@ -167,12 +288,26 @@
         display: grid;
         place-items: center;
         background: linear-gradient(180deg, #15203a, #0b1220);
+        border: 2px solid rgba(124, 58, 237, 0.3);
+        position: relative;
+      }
+      .avatar::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, var(--accent), var(--secondary), var(--accent));
+        border-radius: 22px;
+        z-index: -1;
+        opacity: 0.7;
       }
       .avatar img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 20px;
+        border-radius: 18px;
       }
       .meta {
         color: var(--muted);
@@ -194,6 +329,28 @@
           rgba(255, 255, 255, 0.02)
         );
         min-height: 110px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .feature::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--accent), var(--secondary));
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+      }
+      .feature:hover::before {
+        transform: scaleY(1);
+      }
+      .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.8);
       }
       .feature h4 {
         margin: 0 0 8px 0;
@@ -202,6 +359,7 @@
         margin: 0;
         color: var(--muted);
         font-size: 14px;
+        line-height: 1.5;
       }
 
       .section {
@@ -266,14 +424,152 @@
       }
 
       .projectlinkColor {
-        background: linear-gradient(90deg, var(--accent), #06b6d4);
+        background: linear-gradient(90deg, var(--accent), var(--secondary));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
+      
+      /* New AI-themed elements */
+      .ai-particle {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.7;
+      }
+      
+      .ai-circuit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: 
+          radial-gradient(circle at 20% 35%, transparent 20%, rgba(124, 58, 237, 0.03) 21%, rgba(124, 58, 237, 0.03) 34%, transparent 35%, transparent),
+          radial-gradient(circle at 65% 50%, transparent 20%, rgba(6, 182, 212, 0.03) 21%, rgba(6, 182, 212, 0.03) 34%, transparent 35%, transparent),
+          radial-gradient(circle at 40% 70%, transparent 20%, rgba(124, 58, 237, 0.03) 21%, rgba(124, 58, 237, 0.03) 34%, transparent 35%, transparent);
+        background-size: 50px 50px;
+        opacity: 0.5;
+        z-index: -1;
+      }
+      
+      .ai-glow {
+        position: relative;
+      }
+      .ai-glow::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--accent), var(--secondary));
+        filter: blur(20px);
+        opacity: 0.1;
+        z-index: -1;
+        border-radius: inherit;
+      }
+      
+      @keyframes shine {
+        0% { transform: rotate(30deg) translateX(-100%); }
+        100% { transform: rotate(30deg) translateX(100%); }
+      }
+      
+      .ai-typing {
+        position: relative;
+      }
+      .ai-typing::after {
+        content: "|";
+        animation: blink 1s infinite;
+        margin-left: 2px;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      
+      .ai-pulse {
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+      }
+      
+      .ai-code-bg {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+        border: 1px solid rgba(124, 58, 237, 0.2);
+        border-radius: 8px;
+        padding: 12px;
+        font-family: monospace;
+        font-size: 14px;
+        color: #e2e8f0;
+        position: relative;
+        overflow: hidden;
+      }
+      .ai-code-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.05), transparent);
+        animation: scan 3s infinite linear;
+      }
+      
+      @keyframes scan {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      
+      .ai-connection {
+        position: relative;
+      }
+      .ai-connection::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+      
+      .ai-node {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: nodePulse 2s infinite;
+      }
+      .ai-node:nth-child(1) { left: 20%; animation-delay: 0s; }
+      .ai-node:nth-child(2) { left: 40%; animation-delay: 0.5s; }
+      .ai-node:nth-child(3) { left: 60%; animation-delay: 1s; }
+      .ai-node:nth-child(4) { left: 80%; animation-delay: 1.5s; }
+      
+      @keyframes nodePulse {
+        0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(0.8); }
+        50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+      }
     </style>
   </head>
   <body>
+    <!-- AI Particles Background -->
+    <div id="aiParticles"></div>
+    
     <main>
       <header class="fade-up">
         <div class="brand">
@@ -281,7 +577,7 @@
           <div>
             <div style="font-weight: 800">MD. Arman Haque Lizon</div>
             <div style="font-size: 12px; color: var(--muted)">
-              Software Developer — Tusuka Group
+              AI-Driven Software Developer — Tusuka Group
             </div>
           </div>
         </div>
@@ -294,10 +590,10 @@
       </header>
 
       <section class="hero">
-        <div class="card intro fade-up">
+        <div class="card intro fade-up ai-glow">
           <h1>
             Hi — I'm
-            <span class="projectlinkColor">MD. Arman Haque Lizon</span
+            <span class="projectlinkColor ai-typing">MD. Arman Haque Lizon</span
             ><br /><small style="font-weight: 600; color: var(--muted)"
               >AI-driven Software Developer | PHP, Laravel, .NET & Full Stack
               Specialist</small
@@ -322,7 +618,7 @@
           <div class="cta-row">
             <a
               href="https://drive.google.com/file/d/1r6LG3uHo47D4aIchIH49ErkZnq4fkCZy/view?usp=sharing"
-              class="btn btn-primary"
+              class="btn btn-primary ai-pulse"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -335,14 +631,22 @@
           <div style="margin-top: 16px; color: var(--muted); font-size: 13px">
             Based in Dhaka · Open to AI-powered projects
           </div>
+          
+          <!-- AI Connection Line -->
+          <div class="ai-connection" style="margin-top: 20px; height: 2px; position: relative;">
+            <div class="ai-node"></div>
+            <div class="ai-node"></div>
+            <div class="ai-node"></div>
+            <div class="ai-node"></div>
+          </div>
         </div>
 
-        <aside class="profile-card card fade-up">
+        <aside class="profile-card card fade-up ai-glow">
           <div class="avatar mono">
             <img src="arman-01.jpeg" alt="MD. Arman Haque Lizon" />
           </div>
           <div style="font-weight: 700">MD. Arman Haque Lizon</div>
-          <div class="meta">Software Developer at Tusuka Group</div>
+          <div class="meta">AI-Driven Software Developer at Tusuka Group</div>
           <div style="display: flex; gap: 8px; margin-top: 12px">
             <a class="btn btn-ghost" href="#projects">Projects</a>
             <a class="btn btn-ghost" href="mailto:armanhaqcse@gmail.com"
@@ -356,6 +660,15 @@
             <div class="pill">Laravel / PHP</div>
             <div class="pill">C/ C# / .NET</div>
             <div class="pill">AI Integration</div>
+          </div>
+          
+          <!-- AI Code Background Element -->
+          <div class="ai-code-bg" style="margin-top: 16px; font-size: 10px; text-align: left;">
+            <div>// AI-Powered Development</div>
+            <div>if (problem.exists()) {</div>
+            <div>&nbsp;&nbsp;let solution = ai.analyze(problem);</div>
+            <div>&nbsp;&nbsp;return developer.implement(solution);</div>
+            <div>}</div>
           </div>
         </aside>
       </section>
@@ -519,7 +832,7 @@
           </p>
         </div>
 
-        <div class="contact-card card fade-up">
+        <div class="contact-card card fade-up ai-glow" id="contact">
           <h4>Quick contact</h4>
           <form id="contactForm">
             <label
@@ -586,7 +899,7 @@
         </div>
       </section>
 
-      <section id="ai-demo" class="section card fade-up">
+      <section id="ai-demo" class="section card fade-up ai-glow">
         <h3>AI Demo (Local Simulation)</h3>
         <p style="color: var(--muted)">
           A small simulation that generates professional bios using AI-inspired
@@ -625,6 +938,62 @@
       const $ = (s) => document.querySelector(s);
       $("#year").textContent = new Date().getFullYear();
 
+      // Create AI particles background
+      function createAIParticles() {
+        const container = document.getElementById('aiParticles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'ai-particle';
+          
+          // Random position
+          const left = Math.random() * 100;
+          const top = Math.random() * 100;
+          
+          particle.style.left = `${left}%`;
+          particle.style.top = `${top}%`;
+          
+          // Random size
+          const size = Math.random() * 3 + 1;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          
+          // Random animation
+          const duration = Math.random() * 20 + 10;
+          const delay = Math.random() * 5;
+          
+          particle.style.animation = `float ${duration}s ${delay}s infinite linear`;
+          
+          // Add to container
+          container.appendChild(particle);
+        }
+        
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes float {
+            0% {
+              transform: translate(0, 0) rotate(0deg);
+              opacity: 0;
+            }
+            10% {
+              opacity: 1;
+            }
+            90% {
+              opacity: 1;
+            }
+            100% {
+              transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(360deg);
+              opacity: 0;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      createAIParticles();
+
       $("#downloadResume").addEventListener("click", () => {
         const a = document.createElement("a");
         a.href = "/resume.pdf";
@@ -653,7 +1022,15 @@
         const pick = topics[Math.floor(Math.random() * topics.length)];
         $(
           "#formMsg"
-        ).textContent = `Hi Arman, I’m interested in your ${pick} expertise. Can we collaborate?`;
+        ).textContent = `Hi Arman, I'm interested in your ${pick} expertise. Can we collaborate?`;
+        
+        // Add AI typing effect
+        const formMsg = $("#formMsg");
+        formMsg.style.opacity = "0";
+        setTimeout(() => {
+          formMsg.style.transition = "opacity 0.3s";
+          formMsg.style.opacity = "1";
+        }, 10);
       });
 
       $("#genBio").addEventListener("click", () => {
@@ -663,14 +1040,37 @@
           `Expert in ${topic}, Arman integrates smart algorithms and robust codebases to build scalable web applications.`,
           `MD. Arman Haque Lizon delivers enterprise-grade ${topic} solutions infused with automation and AI adaptability.`,
         ];
-        $("#bioOut").textContent =
-          bios[Math.floor(Math.random() * bios.length)];
+        const bioOut = $("#bioOut");
+        bioOut.textContent = "";
+        
+        // Add typing effect
+        const selectedBio = bios[Math.floor(Math.random() * bios.length)];
+        let i = 0;
+        const typeWriter = () => {
+          if (i < selectedBio.length) {
+            bioOut.textContent += selectedBio.charAt(i);
+            i++;
+            setTimeout(typeWriter, 30);
+          }
+        };
+        typeWriter();
       });
 
       $("#contactBtn").addEventListener(
         "click",
         () => (location.href = "#contact")
       );
+      
+      // Add hover effects to all feature cards
+      document.querySelectorAll('.feature').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
     </script>
   </body>
 </html>
