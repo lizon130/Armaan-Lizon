@@ -749,6 +749,14 @@
         color: inherit;
         font-family: inherit;
         font-size: 14px;
+        min-width: 0;
+      }
+
+      #sendButton {
+        padding: 12px 20px;
+        white-space: nowrap;
+        min-width: 80px; /* Fixed minimum width */
+        flex-shrink: 0; /* Prevent button from shrinking */
       }
 
       .chat-input:focus {
@@ -853,6 +861,48 @@
 
       .message {
         animation: messageSlide 0.3s ease-out;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 480px) {
+        .input-group {
+          gap: 8px;
+        }
+
+        .chat-input {
+          padding: 10px 14px;
+          font-size: 16px; /* Better for mobile touch */
+        }
+
+        #sendButton {
+          padding: 10px 16px;
+          min-width: 70px;
+          font-size: 14px;
+        }
+
+        .quick-questions {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+
+        .quick-btn {
+          font-size: 12px;
+          padding: 5px 10px;
+        }
+      }
+
+      /* Extra small devices */
+      @media (max-width: 360px) {
+        .input-group {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        #sendButton {
+          width: 100%;
+          min-width: auto;
+        }
       }
     </style>
   </head>
