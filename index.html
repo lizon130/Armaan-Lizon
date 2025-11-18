@@ -1603,62 +1603,84 @@
       }
 
       async function getAIResponse(userMessage) {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    // FIRST check for HEDA question - return static response immediately
-    if (lowerMessage.includes("heda") || lowerMessage.includes("what is heda")) {
-        return "Eya's favourite Quotes - ইয়ার পছন্দের একটা শব্দ ";
-    }
-    if (lowerMessage.includes("life") || lowerMessage.includes("Who is Armans Life?")) {
-        return "Eya is the love of arman's life.";
-    }
-    if (lowerMessage.includes("eya") || lowerMessage.includes("Who is Eya?")) {
-        return "Eya is a beautiful soul who holds a special place in Arman's heart.";
-    }
-    if (lowerMessage.includes("education") || lowerMessage.includes("what eya does?")) {
-        return "Eya is a student of BBA in University Of Asia Pacific.";
-    }
+        const lowerMessage = userMessage.toLowerCase();
 
+        // FIRST check for HEDA question - return static response immediately
+        if (
+          lowerMessage.includes("heda") ||
+          lowerMessage.includes("what is heda")
+        ) {
+          return "Eya's favourite Quotes - ইয়ার পছন্দের একটা শব্দ ";
+        }
+        if (
+          lowerMessage.includes("life") ||
+          lowerMessage.includes("Who is Armans Life?")
+        ) {
+          return "Eya is the love of arman's life.";
+        }
+        if (
+          lowerMessage.includes("eya") ||
+          lowerMessage.includes("Who is Eya?")
+        ) {
+          return "Eya is a beautiful soul who holds a special place in Arman's heart.";
+        }
+        if (
+          lowerMessage.includes("education") ||
+          lowerMessage.includes("what eya does?")
+        ) {
+          return "Eya is a student of BBA in University Of Asia Pacific.";
+        }
+        if (
+          lowerMessage.includes("arman") ||
+          lowerMessage.includes("who is arman?")
+        ) {
+          return "Arman is a dedicated software developer specializing in PHP, Laravel, .NET, and AI integrations. He lives in Dhaka, Bangladesh, and works at Tusuka Group.";
+        }
+        if (
+          lowerMessage.includes("projects") ||
+          lowerMessage.includes("what types of project arman does?")
+        ) {
+          return "Arman works on AI-powered web applications, CRM systems, inventory management tools, and chatbots using technologies like PHP, Laravel, C#, .NET, SQL, and JavaScript.";
+        }
 
-    
-    try {
-        // Try Hugging Face API first
-        const response = await fetch(AI_API_URL, {
+        try {
+          // Try Hugging Face API first
+          const response = await fetch(AI_API_URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                inputs: {
-                    text: `Conversation history: ${conversationHistory
-                        .slice(-3)
-                        .map((msg) => `${msg.sender}: ${msg.message}`)
-                        .join(" | ")}
+              inputs: {
+                text: `Conversation history: ${conversationHistory
+                  .slice(-3)
+                  .map((msg) => `${msg.sender}: ${msg.message}`)
+                  .join(" | ")}
             
             You are a helpful AI assistant specializing in web development, programming, and technology. Provide practical, concise advice.
             
             User: ${userMessage}
             AI:`,
-                },
+              },
             }),
-        });
+          });
 
-        if (!response.ok) {
+          if (!response.ok) {
             throw new Error("API not available");
-        }
+          }
 
-        const data = await response.json();
+          const data = await response.json();
 
-        if (data && data.generated_text) {
+          if (data && data.generated_text) {
             return data.generated_text;
-        } else {
+          } else {
             throw new Error("No response from AI");
+          }
+        } catch (error) {
+          // If Hugging Face fails, try alternative free API
+          return await tryAlternativeAI(userMessage);
         }
-    } catch (error) {
-        // If Hugging Face fails, try alternative free API
-        return await tryAlternativeAI(userMessage);
-    }
-}
+      }
 
       async function tryAlternativeAI(userMessage) {
         try {
@@ -1700,23 +1722,26 @@
       }
 
       function getEnhancedFallback(message) {
-    const lowerMessage = message.toLowerCase();
+        const lowerMessage = message.toLowerCase();
 
-    // Check for specific Heda question
-    if (lowerMessage.includes('heda') || lowerMessage.includes('what is heda')) {
-        return "Eya's favourite Quotes ";
-    }
-
-    // Check for other keywords in the message
-    const keywords = Object.keys(enhancedFallbacks);
-    for (const keyword of keywords) {
-        if (lowerMessage.includes(keyword)) {
-            return enhancedFallbacks[keyword];
+        // Check for specific Heda question
+        if (
+          lowerMessage.includes("heda") ||
+          lowerMessage.includes("what is heda")
+        ) {
+          return "Eya's favourite Quotes ";
         }
-    }
 
-    return enhancedFallbacks.default;
-}
+        // Check for other keywords in the message
+        const keywords = Object.keys(enhancedFallbacks);
+        for (const keyword of keywords) {
+          if (lowerMessage.includes(keyword)) {
+            return enhancedFallbacks[keyword];
+          }
+        }
+
+        return enhancedFallbacks.default;
+      }
 
       function askQuickQuestion(question) {
         document.getElementById("aiChatInput").value = question;
