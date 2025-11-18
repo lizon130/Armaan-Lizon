@@ -1228,6 +1228,18 @@
                 >
                   API design
                 </button>
+                <button
+                  class="quick-btn"
+                  onclick="askQuickQuestion('What is Heda?')"
+                >
+                  HEDA
+                </button>
+                <button
+                  class="quick-btn"
+                  onclick="askQuickQuestion('Who is Armans Life?')"
+                >
+                  Arman's Life
+                </button>
               </div>
             </div>
           </div>
@@ -1503,6 +1515,8 @@
 
       // Enhanced fallback responses for various topics
       const enhancedFallbacks = {
+        life: "Eya is the love of arman's life.",
+        heda: "Eya's favourite Quotes - ইয়ার পছন্দের একটা শব্দ",
         programming:
           "That's a great programming question! In software development, it's crucial to write clean, maintainable code and follow best practices. Consider using version control, writing tests, and documenting your code properly.",
         laravel:
@@ -1589,44 +1603,54 @@
       }
 
       async function getAIResponse(userMessage) {
-        try {
-          // Try Hugging Face API first
-          const response = await fetch(AI_API_URL, {
+    const lowerMessage = userMessage.toLowerCase();
+    
+    // FIRST check for HEDA question - return static response immediately
+    if (lowerMessage.includes("heda") || lowerMessage.includes("what is heda")) {
+        return "Eya's favourite Quotes - ইয়ার পছন্দের একটা শব্দ ";
+    }
+    if (lowerMessage.includes("life") || lowerMessage.includes("Who is Armans Life?")) {
+        return "Eya is the love of arman's life.";
+    }
+    
+    try {
+        // Try Hugging Face API first
+        const response = await fetch(AI_API_URL, {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              inputs: {
-                text: `Conversation history: ${conversationHistory
-                  .slice(-3)
-                  .map((msg) => `${msg.sender}: ${msg.message}`)
-                  .join(" | ")}
-          
-          You are a helpful AI assistant specializing in web development, programming, and technology. Provide practical, concise advice.
-          
-          User: ${userMessage}
-          AI:`,
-              },
+                inputs: {
+                    text: `Conversation history: ${conversationHistory
+                        .slice(-3)
+                        .map((msg) => `${msg.sender}: ${msg.message}`)
+                        .join(" | ")}
+            
+            You are a helpful AI assistant specializing in web development, programming, and technology. Provide practical, concise advice.
+            
+            User: ${userMessage}
+            AI:`,
+                },
             }),
-          });
+        });
 
-          if (!response.ok) {
+        if (!response.ok) {
             throw new Error("API not available");
-          }
-
-          const data = await response.json();
-
-          if (data && data.generated_text) {
-            return data.generated_text;
-          } else {
-            throw new Error("No response from AI");
-          }
-        } catch (error) {
-          // If Hugging Face fails, try alternative free API
-          return await tryAlternativeAI(userMessage);
         }
-      }
+
+        const data = await response.json();
+
+        if (data && data.generated_text) {
+            return data.generated_text;
+        } else {
+            throw new Error("No response from AI");
+        }
+    } catch (error) {
+        // If Hugging Face fails, try alternative free API
+        return await tryAlternativeAI(userMessage);
+    }
+}
 
       async function tryAlternativeAI(userMessage) {
         try {
@@ -1668,18 +1692,23 @@
       }
 
       function getEnhancedFallback(message) {
-        const lowerMessage = message.toLowerCase();
+    const lowerMessage = message.toLowerCase();
 
-        // Check for keywords in the message
-        const keywords = Object.keys(enhancedFallbacks);
-        for (const keyword of keywords) {
-          if (lowerMessage.includes(keyword)) {
+    // Check for specific Heda question
+    if (lowerMessage.includes('heda') || lowerMessage.includes('what is heda')) {
+        return "Eya's favourite Quotes ";
+    }
+
+    // Check for other keywords in the message
+    const keywords = Object.keys(enhancedFallbacks);
+    for (const keyword of keywords) {
+        if (lowerMessage.includes(keyword)) {
             return enhancedFallbacks[keyword];
-          }
         }
+    }
 
-        return enhancedFallbacks.default;
-      }
+    return enhancedFallbacks.default;
+}
 
       function askQuickQuestion(question) {
         document.getElementById("aiChatInput").value = question;
