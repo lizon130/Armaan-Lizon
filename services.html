@@ -1,0 +1,509 @@
+<!-- =========================================== -->
+<!-- ADD THIS AS A NEW FILE (services.html) -->
+<!-- =========================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MD. Arman Haque Lizon — Client Services</title>
+    <meta name="description" content="Software development services: eCommerce, Inventory, HRM, POS, AI Integration, Payment Gateway" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <!-- Link to your existing style.css (same as main page) -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Only additional styles for services page - doesn't modify original */
+        .services-hero {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border: 1px solid rgba(0, 224, 255, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
+            border-color: var(--accent);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        .service-title {
+            color: var(--accent);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .service-desc {
+            color: var(--muted);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .tech-stack span {
+            background: rgba(0, 224, 255, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+        
+        .section-header {
+            margin: 50px 0 30px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .social-service {
+            border-left: 4px solid #f0f;
+        }
+        
+        .social-service .service-title {
+            color: #f0f;
+        }
+
+        /* New testimonial styles */
+        .testimonials-section {
+            margin: 60px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--surface-light);
+            border-radius: 28px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid rgba(0, 224, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.3);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .client-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .client-company {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .comment {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .project-type {
+            display: inline-block;
+            background: rgba(0, 224, 255, 0.15);
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            padding: 4px 15px;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- AI Particles Background (same as main) -->
+    <div id="aiParticles"></div>
+
+    <main>
+        <!-- Header (exactly same as your original) -->
+        <header class="fade-up">
+            <div class="brand">
+                <div class="logo" aria-hidden><span>AL</span></div>
+                <div>
+                    <div style="font-weight: 800">MD. Arman Haque Lizon</div>
+                    <div style="font-size: 12px; color: var(--muted)">
+                        AI-Driven Software Developer — Tusuka Group
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="services.html" style="color: var(--accent);">Services</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#ai-demo">AI Demo</a>
+                <a class="cta" href="index.html#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Services Hero -->
+        <div class="services-hero fade-up">
+            <h1 style="font-size: 3rem; margin-bottom: 16px;">
+                <span class="gradient-text" style="background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                    Client Services
+                </span>
+            </h1>
+            <p style="color: var(--muted); max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
+                Custom software solutions with AI integration, tailored to your business needs
+            </p>
+        </div>
+
+        <!-- MAIN SERVICES GRID - All your requested services -->
+        <div class="services-grid">
+            <!-- 1. eCommerce Project -->
+            <div class="service-card fade-up">
+                <div class="service-icon">🛒</div>
+                <h3 class="service-title">eCommerce Platform</h3>
+                <p class="service-desc">Complete online store solution with product management, cart, checkout, order tracking, and admin dashboard. Multi-vendor support available.</p>
+                <div class="tech-stack">
+                    <span>Laravel</span>
+                    <span>MySQL</span>
+                    <span>JavaScript</span>
+                    <span>Tailwind</span>
+                    <span>AJAX</span>
+                </div>
+            </div>
+
+            <!-- 2. Inventory System -->
+            <div class="service-card fade-up">
+                <div class="service-icon">📦</div>
+                <h3 class="service-title">Inventory Management System</h3>
+                <p class="service-desc">Real-time stock tracking, purchase orders, supplier management, barcode integration, low stock alerts, and detailed inventory reports.</p>
+                <div class="tech-stack">
+                    <span>PHP/Laravel</span>
+                    <span>MySQL</span>
+                    <span>jQuery</span>
+                    <span>AJAX</span>
+                </div>
+            </div>
+
+            <!-- 3. HRM System -->
+            <div class="service-card fade-up">
+                <div class="service-icon">👥</div>
+                <h3 class="service-title">HRM Software</h3>
+                <p class="service-desc">Employee management, attendance tracking, leave management, payroll processing, performance reviews, and employee self-service portal.</p>
+                <div class="tech-stack">
+                    <span>Laravel</span>
+                    <span>MySQL</span>
+                    <span>JavaScript</span>
+                    <span>Tailwind</span>
+                </div>
+            </div>
+
+            <!-- 4. POS Software -->
+            <div class="service-card fade-up">
+                <div class="service-icon">💳</div>
+                <h3 class="service-title">POS Software</h3>
+                <p class="service-desc">Point of Sale system with billing, invoice generation, inventory sync, customer management, sales reports, and offline mode support.</p>
+                <div class="tech-stack">
+                    <span>Laravel</span>
+                    <span>MySQL</span>
+                    <span>JavaScript</span>
+                    <span>Bootstrap</span>
+                </div>
+            </div>
+
+            <!-- 5. Professional Website -->
+            <div class="service-card fade-up">
+                <div class="service-icon">🌐</div>
+                <h3 class="service-title">Professional Website</h3>
+                <p class="service-desc">Corporate websites, portfolio sites, business landing pages with responsive design, SEO optimization, and content management system.</p>
+                <div class="tech-stack">
+                    <span>HTML/CSS</span>
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>Tailwind</span>
+                </div>
+            </div>
+
+            <!-- 6. AI Integration -->
+            <div class="service-card fade-up">
+                <div class="service-icon">🧠</div>
+                <h3 class="service-title">AI Integration</h3>
+                <p class="service-desc">Integrate AI capabilities into your software: chatbots, lead scoring, predictive analytics, document classification, and intelligent automation.</p>
+                <div class="tech-stack">
+                    <span>OpenAI API</span>
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Laravel</span>
+                </div>
+            </div>
+
+            <!-- 7. Payment Gateway Integration -->
+            <div class="service-card fade-up">
+                <div class="service-icon">💲</div>
+                <h3 class="service-title">Payment Gateway Integration</h3>
+                <p class="service-desc">Secure payment processing with bKash, SSLCommerz, Stripe, PayPal, Razorpay. Subscription billing, webhook handling, and refund management.</p>
+                <div class="tech-stack">
+                    <span>bKash</span>
+                    <span>SSLCommerz</span>
+                    <span>Stripe</span>
+                    <span>PayPal</span>
+                </div>
+            </div>
+
+            <!-- 8. Facebook Boosting -->
+            <div class="service-card fade-up social-service">
+                <div class="service-icon">📈</div>
+                <h3 class="service-title">Facebook Boosting</h3>
+                <p class="service-desc">Targeted Facebook ad campaigns, audience targeting, pixel setup, conversion tracking, and ROI optimization for your business.</p>
+                <div class="tech-stack">
+                    <span>Meta Ads</span>
+                    <span>Pixel</span>
+                    <span>Analytics</span>
+                    <span>AI Targeting</span>
+                </div>
+            </div>
+
+            <!-- 9. Social Media Management -->
+            <div class="service-card fade-up social-service">
+                <div class="service-icon">📱</div>
+                <h3 class="service-title">Social Media Management</h3>
+                <p class="service-desc">Complete social media handling: content creation, scheduling, engagement, community management, and performance analytics for all platforms.</p>
+                <div class="tech-stack">
+                    <span>Facebook</span>
+                    <span>Instagram</span>
+                    <span>LinkedIn</span>
+                    <span>Twitter</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== NEW TESTIMONIALS SECTION ========== -->
+        <div class="testimonials-section fade-up">
+            <div class="section-header">
+                <h2>⭐ Client Success Stories</h2>
+                <p style="color: var(--muted); margin-top: 10px;">What my clients say about their software solutions</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Rowshon Traders - Inventory System -->
+                <div class="testimonial-card">
+                    <div class="client-name">Rowshon Traders</div>
+                    <div class="client-company">
+                        <span>📍 Wholesale & Distribution</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="comment">
+                        "Arman developed a complete Inventory Management System for our business. The system handles all our stock tracking, purchase orders, and supplier management perfectly. It's been 6 months and everything runs smoothly. Highly recommended!"
+                    </div>
+                    <div class="project-type">
+                        📦 Inventory Management System
+                    </div>
+                </div>
+
+                <!-- Modern Garments - HRM System -->
+                <div class="testimonial-card">
+                    <div class="client-name">Modern Garments</div>
+                    <div class="client-company">
+                        <span>📍 Garments & Textile</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="comment">
+                        "We needed a complete HRM solution for our 200+ employees. Arman delivered an excellent system with attendance tracking, payroll, leave management, and performance reviews. The automation saved us hours of manual work every week."
+                    </div>
+                    <div class="project-type">
+                        👥 HRM Software
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats / Trust Indicators -->
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--accent);">15+</div>
+                    <div style="color: var(--muted);">Projects Completed</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--accent);">★★★★★</div>
+                    <div style="color: var(--muted);">5-Star Ratings</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--accent);">100%</div>
+                    <div style="color: var(--muted);">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Services Section -->
+        <div class="section-header fade-up">
+            <h2>More Solutions</h2>
+        </div>
+
+        <div class="services-grid">
+            <!-- Custom ERP -->
+            <div class="service-card fade-up">
+                <div class="service-icon">⚙️</div>
+                <h3 class="service-title">Custom ERP</h3>
+                <p class="service-desc">Enterprise Resource Planning solutions tailored to your business workflow, integrating all operations in one system.</p>
+                <div class="tech-stack">
+                    <span>Laravel</span>
+                    <span>.NET</span>
+                    <span>SQL</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+            <!-- Mobile App Backend -->
+            <div class="service-card fade-up">
+                <div class="service-icon">📱</div>
+                <h3 class="service-title">Mobile App Backend</h3>
+                <p class="service-desc">RESTful APIs, authentication, database design, and cloud integration for mobile applications.</p>
+                <div class="tech-stack">
+                    <span>Laravel API</span>
+                    <span>JWT</span>
+                    <span>MySQL</span>
+                    <span>Firebase</span>
+                </div>
+            </div>
+
+            <!-- Database Optimization -->
+            <div class="service-card fade-up">
+                <div class="service-icon">🗄️</div>
+                <h3 class="service-title">Database Optimization</h3>
+                <p class="service-desc">Query optimization, indexing strategies, database design, and performance tuning for faster applications.</p>
+                <div class="tech-stack">
+                    <span>MySQL</span>
+                    <span>SQL Server</span>
+                    <span>Query Opt</span>
+                    <span>Indexing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="card ai-glow fade-up" style="margin: 50px 0; text-align: center; padding: 40px;">
+            <h2 style="font-size: 2rem; margin-bottom: 16px;">Ready to Start Your Project?</h2>
+            <p style="color: var(--muted); max-width: 600px; margin: 0 auto 24px;">
+                Let's discuss how I can help build your next software solution with cutting-edge technology and AI integration.
+            </p>
+            <a href="index.html#contact" class="btn btn-primary" style="font-size: 1.2rem; padding: 12px 36px;">Contact Me</a>
+        </div>
+
+        <!-- Footer (same as original) -->
+        <footer>
+            <div>
+                © <span id="year"></span> MD. Arman Haque Lizon — AI-driven PHP & Full Stack Developer • <span class="mono">armanhaqcse@gmail.com</span>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Particles (copy from your original)
+        function createAIParticles() {
+            const container = document.getElementById("aiParticles");
+            if (!container) return;
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement("div");
+                particle.className = "ai-particle";
+                particle.style.left = Math.random() * 100 + "%";
+                particle.style.top = Math.random() * 100 + "%";
+                particle.style.width = (Math.random() * 3 + 1) + "px";
+                particle.style.height = particle.style.width;
+                particle.style.animation = `float ${Math.random() * 20 + 10}s infinite linear`;
+                container.appendChild(particle);
+            }
+        }
+        createAIParticles();
+
+        // Add fade-up on scroll
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
