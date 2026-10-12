@@ -110,14 +110,26 @@
         <div class="cta-section">
           <div class="cta-row">
             <a
-              href="https://drive.google.com/file/d/1IzQ6emcByV_q2MDyZkje4lU9H6UFNxXe/view?usp=sharing"
+              href="armanLizon.html"
+              download="MD_Arman_Haque_Lizon_Resume.html"
+              class="btn btn-primary futuristic-btn"
+            >
+              <span class="btn-content">
+                <span class="btn-icon">↓</span>
+                <span class="btn-text">Download Resume</span>
+              </span>
+              <div class="btn-hover-effect"></div>
+            </a>
+
+            <a
+              href="armanLizon.html"
               class="btn btn-primary futuristic-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
               <span class="btn-content">
-                <span class="btn-icon">↓</span>
-                <span class="btn-text">Download Resume</span>
+                <span class="btn-icon">👁</span>
+                <span class="btn-text">View CV</span>
               </span>
               <div class="btn-hover-effect"></div>
             </a>
@@ -667,22 +679,49 @@
 
       createAIParticles();
 
-      $("#downloadResume").addEventListener("click", () => {
-        const a = document.createElement("a");
-        a.href = "/resume.pdf";
-        a.download = "MD_Arman_Haque_Lizon_Resume.pdf";
-        a.click();
-      });
-
-      $("#contactForm").addEventListener("submit", (e) => {
+      $("#contactForm").addEventListener("submit", async (e) => {
         e.preventDefault();
+        const formMsg = $("#formMsg");
         const mail = $("#email").value;
         const msg = $("#message").value;
-        window.location.href = `mailto:armanhaqcse@gmail.com?subject=Portfolio Contact from ${mail}&body=${encodeURIComponent(
-          msg
-        )}`;
-        $("#formMsg").textContent =
-          "Mail client opened — or email me at armanhaqcse@gmail.com";
+
+        formMsg.textContent = "Sending...";
+
+        try {
+          // FormSubmit sends the message directly to armanhaqcse@gmail.com
+          const res = await fetch(
+            "https://formsubmit.co/ajax/armanhaqcse@gmail.com",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                email: mail,
+                message: msg,
+                _subject: "Portfolio Contact from " + mail,
+                _captcha: "false",
+                _template: "table",
+              }),
+            }
+          );
+
+          const data = await res.json();
+          if (data.success === "true" || data.success === true) {
+            formMsg.textContent = "Message sent! I will get back to you soon.";
+            $("#contactForm").reset();
+          } else {
+            throw new Error(data.message || "Send failed");
+          }
+        } catch (err) {
+          // Fallback: open visitor's mail client
+          window.location.href = `mailto:armanhaqcse@gmail.com?subject=Portfolio Contact from ${mail}&body=${encodeURIComponent(
+            msg
+          )}`;
+          formMsg.textContent =
+            "Could not send automatically — mail client opened, or email me at armanhaqcse@gmail.com";
+        }
       });
 
       $("#aiSuggest").addEventListener("click", () => {
